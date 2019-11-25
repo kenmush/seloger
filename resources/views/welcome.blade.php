@@ -37,6 +37,9 @@
                                                         {{ \Illuminate\Support\Str::afterLast($result->url,'/') }}
                                                     </a></td>
                                                 <td>{{ $result->price }}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                                 <td>{{ $result->location }}</td>
                                                 <td>{{ $result->type }}</td>
                                                 <td>{{ $result->m2 }}</td>
