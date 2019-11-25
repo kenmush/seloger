@@ -6,7 +6,24 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Listings</h4>
+                            <p class="float-right">
+                               <strong> {{ today()->toFormattedDateString() }}</strong>
+                            </p>
+                            <br>
+                            <h4 class="card-title">Listings
+                            <small class="float-right">
+                                <a href="">
+                                    <i class="far fa-file-pdf fa-2x"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fas fa-file-excel fa-2x"></i>
+
+                                </a>
+                                <a href="">
+                                    <i class="far fa-envelope fa-2x "></i>
+                                </a>
+                            </small>
+                            </h4>
                             <div>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered">
