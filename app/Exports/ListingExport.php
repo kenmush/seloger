@@ -24,10 +24,8 @@ class ListingExport implements FromCollection,WithHeadings
         return [
             '#',
             'Website',
-            'Postcode',
             'URL',
-            'price',
-            'price',
+            'Postcode',
             'price',
             'location',
             'type',
