@@ -30,7 +30,9 @@
                                     <td scope="row">{{$loop->iteration }}</td>
                                     <td>{{ $result->website }}</td>
                                     <td>{{ $result->postcode }}</td>
-                                    <td>{{ $result->url }}</td>
+                                    <td><a href="{{ $result->url }}">
+                                            {{ \Illuminate\Support\Str::afterLast($url,'/') }}
+                                        </a></td>
                                     <td>{{ $result->price }}</td>
                                     <td>{{ $result->location }}</td>
                                     <td>{{ $result->type }}</td>
