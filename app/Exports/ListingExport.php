@@ -7,8 +7,9 @@ namespace App\Exports;
 use App\Results;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ListingExport implements FromCollection
+class ListingExport implements FromCollection,WithHeadings
 {
 
     /**
