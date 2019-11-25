@@ -6,7 +6,7 @@ Route::get('/', function () {
 
 Route::get('/getproperties', function () {
     $client = new \GuzzleHttp\Client();
-    $response = $client->request('GET', 'https://www.seloger.com/list.htm?types=1%2C2&projects=2&enterprise=0&natures=1%2C2&places=%5B%7Bdiv%3A2238%7D%5D&qsVersion=1.0&LISTING-LISTpg=2', [
+    $response = $client->request('GET', 'https://www.seloger.com/list.htm?types=1%2C2&projects=2&enterprise=0&natures=1%2C2&places=%5B%7Bci%3A69383%7D%5D&qsVersion=1.0&LISTING-LISTpg=2', [
         'headers' => [
             'authority' => 'www.seloger.com',
             'origin' => 'www.seloger.com',

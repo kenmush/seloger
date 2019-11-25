@@ -22,11 +22,11 @@ class ScrapeSelonger extends Command
         $cities = City::all()->pluck('insee');
 
         foreach ($cities as $city) {
-            $this->info('Scraping for ' . $city);
+            $this->line('Scraping for ' . $city);
             $seloger = new Selonger();
             $seloger->search($city);
-            $this->info('Finished scraping for '. $city);
+            $this->line('Finished scraping for '. $city);
         }
-        $this->info('Finished scraping the seloger site.');
+        $this->line('Finished scraping the seloger site.');
     }
 }
