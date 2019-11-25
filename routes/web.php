@@ -30,7 +30,7 @@ Route::get('/getproperties', function () {
 
 Route::get('saveProperties', function () {
     $date = date('Y-m-d');
-    $file = file_get_contents(public_path("$date.json"));;
+    $file = file_get_contents(public_path("$date.json"));
 
     $data = collect(json_decode($file));
     dd($data);
