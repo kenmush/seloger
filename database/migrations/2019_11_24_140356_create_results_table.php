@@ -19,6 +19,7 @@ class CreateResultsTable extends Migration
             $table->string('url')->nullable();
             $table->string('postcode')->nullable();
             $table->string('price')->nullable();
+            $table->string('squareMeterPrice')->nullable();
             $table->string('location')->nullable();
             $table->string('type')->nullable();
             $table->string('m2')->nullable();

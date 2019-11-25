@@ -36,6 +36,7 @@ class Selonger
             }
             $unit = new \App\Results();
             $unit->website = 'seloger';
+            $unit->squareMeterPrice = $card->pricing->squareMeterPrice ?? '';
             $unit->price = $card->pricing->price ?? '';
             $unit->url = $card->classifiedURL ?? '';
             $unit->postcode = $card->zipCode ?? '';
