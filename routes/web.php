@@ -49,3 +49,7 @@ Route::get('/mutisya', function () {
     return $seloner->search('GET');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
