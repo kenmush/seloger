@@ -18,4 +18,21 @@ class ListingExport implements FromCollection
     {
         return Results::all();
     }
+    public function headings(): array
+    {
+        return [
+            '#',
+            'Website',
+            'Postcode',
+            'URL',
+            'price',
+            'price',
+            'price',
+            'location',
+            'type',
+            'm2',
+            '# of rooms',
+            '# of bedrooms',
+        ];
+    }
 }
