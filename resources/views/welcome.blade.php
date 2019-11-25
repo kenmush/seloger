@@ -31,7 +31,7 @@
                                     <td>{{ $result->website }}</td>
                                     <td>{{ $result->postcode }}</td>
                                     <td><a href="{{ $result->url }}">
-                                            {{ \Illuminate\Support\Str::afterLast($url,'/') }}
+                                            {{ \Illuminate\Support\Str::afterLast($result->url,'/') }}
                                         </a></td>
                                     <td>{{ $result->price }}</td>
                                     <td>{{ $result->location }}</td>
