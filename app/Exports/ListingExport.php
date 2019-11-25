@@ -16,6 +16,6 @@ class ListingExport implements FromCollection
      */
     public function collection()
     {
-        return Results::all()->where('created_at', today());
+        return Results::all();
     }
 }
