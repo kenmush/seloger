@@ -24,7 +24,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        return view('city.home');
     }
 
     /**
@@ -38,17 +38,17 @@ class CityController extends Controller
     public function store(Request $request,City $city)
     {
         $this->validate($request, [
-            'city' => ['required'],
+            'cityName' => ['required'],
             'postalcode' => ['required','unique:cities,postalcode'],
             'insee' => ['required'],
         ]);
 
-        $city->city = $request->city;
+        $city->city = $request->cityName;
         $city->postalcode = $request->postalcode;
         $city->insee = $request->insee;
         $city->save();
 
-        return response()->json($city);
+        return back();
     }
 
     /**

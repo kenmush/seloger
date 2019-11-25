@@ -8,6 +8,8 @@ Route::get('/', function () {
 Route::get('/exportxls', function () {
     return Excel::download(new \App\Exports\ListingExport, 'invoices.xlsx');
 });
+Route::resource('city','CityController');
+
 Route::get('/getproperties', function () {
     $client = new \GuzzleHttp\Client();
     $response = $client->request('GET', 'https://www.seloger.com/list.htm?types=1%2C2&projects=2&enterprise=0&natures=1%2C2&places=%5B%7Bci%3A69383%7D%5D&qsVersion=1.0&LISTING-LISTpg=2', [
