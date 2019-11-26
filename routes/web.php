@@ -14,12 +14,15 @@ Route::get('/getproperties', function () {
     $client = new \GuzzleHttp\Client();
     $response = $client->request('GET', 'https://www.seloger.com/list.htm?types=1%2C2&projects=2&enterprise=0&natures=1%2C2&places=%5B%7Bci%3A69383%7D%5D&qsVersion=1.0&LISTING-LISTpg=2', [
         'headers' => [
+            'cache-control' => 'no-cache',
+            'pragma' => 'no-cache',
             'authority' => 'www.seloger.com',
             'origin' => 'www.seloger.com',
             'sec-fetch-site' => 'same-origin',
             'sec-fetch-mode' => 'cors',
             'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
-            'referer' => 'https://www.seloger.com'
+            'referer' => 'https://www.seloger.com',
+            'dnt' => '1',
         ]
     ]);
     $res = $response->getBody()->getContents();
