@@ -31,7 +31,13 @@
                 <ul class="navbar-nav ml-auto navbar-right">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#products">Features</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#pricing">Pricing</a></li>
-                    <li class="nav-item"><a class="btn-cta nav-link js-scroll-trigger" href="{{ route('login') }}">Log In</a></li>
+                    <li class="nav-item">
+                        @guest
+                            <a class="btn-cta nav-link js-scroll-trigger" href="{{ route('login') }}">Log In</a>
+                        @else
+                            <a class="btn-cta nav-link js-scroll-trigger" href="{{ route('home') }}">Go to App</a>
+                        @endguest
+                    </li>
                 </ul>
             </div>
         </div>
@@ -51,7 +57,12 @@
                         <div class="hero-content wow fadeIn">
                             <h1>Multi purpose listing scraper.</h1>
                             <p>Get listing data by the price per square metre from the major listing sites.</p>
-                            <a class="btn-action js-scroll-trigger" href="#signup">Register now</a>
+                            @guest
+                                <a class="btn-action js-scroll-trigger" href="#signup">Register now</a>
+                            @else
+                                <a class="btn-cta nav-link js-scroll-trigger" href="{{ route('home') }}">Go to App</a>
+                            @endguest
+
                         </div>
                     </div>
 
@@ -148,8 +159,11 @@
                     </table>
 
                 </div>
-                <a class="btn-action js-scroll-trigger centered" href="{{ route('register') }}">Register now</a>
-
+                @guest
+                    <a class="btn-action js-scroll-trigger" href="#signup">Register now</a>
+                @else
+                    <a class="btn-action js-scroll-trigger centered" href="{{ route('home') }}">Go to App</a>
+                @endguest
             </div>
         </div>
 
@@ -178,7 +192,13 @@
                                             <li>Excel Report</li>
                                             <li>PDF Report</li>
                                         </ul>
-                                        <button class="btn-action" href="{{ route('register') }}">Get Plan</button>
+                                        @guest
+                                            <button class="btn-action" href="{{ route('register') }}">Get Plan</button>
+
+                                        @else
+                                            <a class="btn-action js-scroll-trigger centered" href="{{ route('home') }}">Go
+                                                to App</a>
+                                        @endguest
                                     </div>
                                 </div>
                             </div>
@@ -193,7 +213,12 @@
                                             <li>Excel Report</li>
                                             <li>PDF Report</li>
                                         </ul>
-                                        <button class="btn-action" href="{{ route('register') }}">Buy Now</button>
+                                        @guest
+                                            <button class="btn-action" href="{{ route('register') }}">Buy Now</button>
+                                        @else
+                                            <a class="btn-action js-scroll-trigger centered" href="{{ route('home') }}">Go
+                                                to App</a>
+                                        @endguest
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +233,7 @@
         <div id="signup" class="cta-sm">
             <div class="container-m text-center">
                 <div class="cta-content">
-{{--                    <h4>GRAB ARRAY FOR BEST PRICE TODAY</h4>--}}
+                    {{--                    <h4>GRAB ARRAY FOR BEST PRICE TODAY</h4>--}}
                     <h1>Start now and get your reports every day.</h1>
                     <div class="form wow fadeIn" data-wow-delay="0.2s">
                         <form id="chimp-form" class="subscribe-form wow zoomIn"
@@ -241,9 +266,9 @@
                     </div>
                     <div class="col-md-4">
                         <ul>
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Linkedin</a></li>
+{{--                            <li><a href="#">Facebook</a></li>--}}
+{{--                            <li><a href="#">Twitter</a></li>--}}
+{{--                            <li><a href="#">Linkedin</a></li>--}}
                         </ul>
                     </div>
                 </div>

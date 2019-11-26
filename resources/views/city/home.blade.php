@@ -50,8 +50,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table--inverse">
-                                    <thead class="thead-light">
+                                <table class="table table-inverse">
+                                    <thead class="">
                                     <tr>
                                         <th>#</th>
                                         <th>City</th>
