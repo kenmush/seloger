@@ -57,6 +57,7 @@
                                         <th>City</th>
                                         <th>Postal Code</th>
                                         <th>INSEE Code</th>
+                                        <td></td>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -66,6 +67,11 @@
                                             <td>{{ $city->city }}</td>
                                             <td>{{ $city->postalcode }}</td>
                                             <td>{{ $city->insee }}</td>
+                                            <td>
+                                                <button class="btn btn-outline-danger btn-sm text-danger">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
