@@ -23,7 +23,7 @@ class Selonger
                         'origin' => 'www.seloger.com',
                         'sec-fetch-site' => 'same-origin',
                         'sec-fetch-mode' => 'cors',
-                        'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
+                        'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_3 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13G34',
                         'referer' => 'https://www.seloger.com'
                     ],
                     'cookies' => $jar,
