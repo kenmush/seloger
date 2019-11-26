@@ -68,8 +68,13 @@
                                             <td>{{ $city->postalcode }}</td>
                                             <td>{{ $city->insee }}</td>
                                             <td>
-                                                <button class="btn btn-outline-danger btn-sm text-danger">
+                                                <button class="btn btn-outline-danger btn-sm text-danger" onclick="event.preventDefault();
+                                                     document.getElementById('deletecity').submit();">
                                                     <i class="fas fa-trash-alt"></i>
+                                                    <form action="{{ route('city.destroy',$city->id) }}" method="POST" id="deletecity">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
                                                 </button>
                                             </td>
                                             <td>
