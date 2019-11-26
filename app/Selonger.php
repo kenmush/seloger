@@ -11,6 +11,7 @@ class Selonger
         $results = [];
         do {
             $client = new \GuzzleHttp\Client();
+            $jar = new \GuzzleHttp\Cookie\CookieJar();
             $response = $client->request('GET', "https://www.seloger.com/list.htm?projects=2&types=1%2C2&natures=1%2C2&places=%5B%7Bci%3A690381%7D%5D&enterprise=0&qsVersion=1.0&LISTING-LISTpg={$page}", [
                 'headers' => [
                     'authority' => 'www.seloger.com',
@@ -20,10 +21,7 @@ class Selonger
                     'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
                     'referer' => 'https://www.seloger.com'
                 ],
-//                'proxy' => [
-//                    'http'  => '190.7.113.63:80', // Use this proxy with "http"
-//                    'https' => '190.7.113.63:80', // Use this proxy with "https",
-//                ]
+                'cookies' => $jar
             ]);
             $res = $response->getBody()->getContents();
             preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);

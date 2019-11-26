@@ -20,14 +20,12 @@ class ScrapeSelonger extends Command
 
     public function handle()
     {
-        $cities = City::all()->pluck('insee');
-        $this->line('Started new job: ');
+        $cities = City::all();
         foreach ($cities as $city) {
-            $this->line('Scraping for ' . $city);
+            $this->line('Started new job: ' . $city->city);
             $seloger = new Selonger();
-            $seloger->search($city);
-            $this->line('Finished scraping for '. $city);
+            $seloger->search($city->insee);
+            $this->line('Finished scraping for ' . $city->city);
         }
-        $this->line('Finished scraping the seloger site.');
     }
 }
