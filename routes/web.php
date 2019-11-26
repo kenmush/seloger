@@ -8,7 +8,7 @@ Route::get('/', function () {
 Route::get('/exportxls', function () {
     return Excel::download(new \App\Exports\ListingExport, 'invoices.xlsx');
 });
-Route::resource('city','CityController');
+Route::resource('city', 'CityController');
 
 Route::get('/getproperties', function () {
     $client = new \GuzzleHttp\Client();
@@ -23,11 +23,11 @@ Route::get('/getproperties', function () {
         ]
     ]);
     $res = $response->getBody()->getContents();
-
-    preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
-    $date = date('Y-m-d');
+    echo $res;
+//    preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
+//    $date = date('Y-m-d');
 //    file_put_contents(public_path("$date.json"), (string)$output_array2[0][0]);
-    dd(json_decode($output_array2[0][0]));
+//    dd(json_decode($output_array2[0][0]));
 });
 
 Route::get('saveProperties', function () {
