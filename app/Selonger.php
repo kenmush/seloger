@@ -34,13 +34,14 @@ class Selonger
             if (!isset($card->classifiedURL)) {
                 return;
             }
+            $locate = $card->cityLabel .  $card->districtLabel;
             $unit = new \App\Results();
             $unit->website = 'seloger';
             $unit->squareMeterPrice = $card->pricing->squareMeterPrice ?? '';
             $unit->price = $card->pricing->price ?? '';
             $unit->url = $card->classifiedURL ?? '';
             $unit->postcode = $card->zipCode ?? '';
-            $unit->location = $card->cityLabel ?? '';
+            $unit->location = $locate ?? '';
             $unit->type = $card->estateType ?? '';
             $unit->m2 = $card->tags[2] ?? '';
             $unit->rooms = $card->tags[0] ?? '';
