@@ -57,7 +57,7 @@
                                         <th>City</th>
                                         <th>Postal Code</th>
                                         <th>INSEE Code</th>
-                                        <td></td>
+                                        <td colspan="2"></td>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -70,6 +70,11 @@
                                             <td>
                                                 <button class="btn btn-outline-danger btn-sm text-danger">
                                                     <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm ">
+                                                    <i class="fas fa-search"></i>
                                                 </button>
                                             </td>
                                         </tr>

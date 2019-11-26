@@ -1,6 +1,9 @@
 <?php
 
 namespace App;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
+
 class Selonger
 {
     public function search($postcode)
@@ -10,30 +13,37 @@ class Selonger
         $totalpages = 1;
         $results = [];
         do {
+
             $client = new \GuzzleHttp\Client();
             $jar = new \GuzzleHttp\Cookie\CookieJar();
-            $response = $client->request('GET', "https://www.seloger.com/list.htm?projects=2&types=1%2C2&natures=1%2C2&places=%5B%7Bci%3A690381%7D%5D&enterprise=0&qsVersion=1.0&LISTING-LISTpg={$page}", [
-                'headers' => [
-                    'authority' => 'www.seloger.com',
-                    'origin' => 'www.seloger.com',
-                    'sec-fetch-site' => 'same-origin',
-                    'sec-fetch-mode' => 'cors',
-                    'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
-                    'referer' => 'https://www.seloger.com'
-                ],
-                'cookies' => $jar,
-                'proxy' => [
-                    'http'  => '190.7.113.63:80', // Use this proxy with "http"
-                    'https' => '190.7.113.63:80', // Use this proxy with "https",
-                ]
-            ]);
-            $res = $response->getBody()->getContents();
-            preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
-            $date = date('Y-m-d');
-            $data = collect(json_decode($output_array2[0][0]));
-            $totalpages = round($data['pagination']->count / 25, 0);
-            $results = array_merge($results, $data['cards']->list);
-            $page++;
+            try {
+                $response = $client->request('GET', "https://www.seloger.com/list.htm?projects=2&types=1%2C2&natures=1%2C2&places=%5B%7Bci%3A690381%7D%5D&enterprise=0&qsVersion=1.0&LISTING-LISTpg={$page}", [
+                    'headers' => [
+                        'authority' => 'www.seloger.com',
+                        'origin' => 'www.seloger.com',
+                        'sec-fetch-site' => 'same-origin',
+                        'sec-fetch-mode' => 'cors',
+                        'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
+                        'referer' => 'https://www.seloger.com'
+                    ],
+                    'cookies' => $jar,
+                    'proxy' => [
+                        'http'  => '190.7.113.63:80', // Use this proxy with "http"
+                        'https' => '190.7.113.63:80', // Use this proxy with "https",
+                    ]
+                ]);
+                $res = $response->getBody()->getContents();
+                preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
+                $date = date('Y-m-d');
+                $data = collect(json_decode($output_array2[0][0]));
+                $totalpages = round($data['pagination']->count / 25, 0);
+                $results = array_merge($results, $data['cards']->list);
+                $page++;
+            } catch (ClientException $exception) {
+                $response = $exception->getResponse();
+                $responseBodyAsString = $response->getBody()->getContents();
+            }
+
         } while ($page <= $totalpages);
         $tosave = collect($results)->each(static function ($card) {
             if (!isset($card->classifiedURL)) {
