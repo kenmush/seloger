@@ -19,6 +19,10 @@ class Selonger
                     'sec-fetch-mode' => 'cors',
                     'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
                     'referer' => 'https://www.seloger.com'
+                ],
+                'proxy' => [
+                    'http'  => '190.7.113.63:80', // Use this proxy with "http"
+                    'https' => '190.7.113.63:80', // Use this proxy with "https",
                 ]
             ]);
             $res = $response->getBody()->getContents();
