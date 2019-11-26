@@ -11,6 +11,7 @@ class ScrapeSelonger extends Command
 
     protected $signature = 'scrape:seloger';
 
+
     public function __construct()
     {
         parent::__construct();
@@ -20,7 +21,7 @@ class ScrapeSelonger extends Command
     public function handle()
     {
         $cities = City::all()->pluck('insee');
-
+        $this->line('Started new job: ');
         foreach ($cities as $city) {
             $this->line('Scraping for ' . $city);
             $seloger = new Selonger();
