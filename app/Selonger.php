@@ -5,7 +5,7 @@ class Selonger
 {
     public function search($postcode)
     {
-        ini_set('max_execution_time', 100000);
+        ini_set('max_execution_time', 1000000);
         $page = 1;
         $totalpages = 1;
         $results = [];
@@ -35,7 +35,6 @@ class Selonger
             $results = array_merge($results, $data['cards']->list);
             $page++;
         } while ($page <= $totalpages);
-
         $tosave = collect($results)->each(static function ($card) {
             if (!isset($card->classifiedURL)) {
                 return;
@@ -55,6 +54,7 @@ class Selonger
             $unit->description = $card->description ?? '';
             $unit->save();
         });
+        sleep(10);
         return $results;
     }
 
