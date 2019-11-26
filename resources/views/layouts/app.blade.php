@@ -86,5 +86,10 @@
         @yield('content')
     </main>
 </div>
+<script>
+    $(document).ready( function () {
+        $('#listingtable').DataTable();
+    } );
+</script>
 </body>
 </html>

@@ -18,7 +18,7 @@
                             <a href="">
                                 <i class="far fa-file-pdf fa-2x"></i>
                             </a>
-                            <a href="">
+                            <a href="{{ url('exportxls') }}">
                                 <i class="fas fa-file-excel fa-2x"></i>
 
                             </a>
@@ -28,7 +28,7 @@
                         </small>
                     </h4>
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered">
+                        <table class="table table-striped table-bordered" id="listingtable">
                             <thead class="thead-light">
                             <tr>
                                 <th>#</th>

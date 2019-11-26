@@ -8,6 +8,7 @@ Route::get('/', function () {
 Route::get('/exportxls', function () {
     return Excel::download(new \App\Exports\ListingExport, 'invoices.xlsx');
 });
+
 Route::resource('city', 'CityController');
 
 Route::get('/getproperties', function () {
@@ -36,32 +37,6 @@ Route::get('/getproperties', function () {
 //    file_put_contents(public_path("$date.json"), (string)$output_array2[0][0]);
 //    dd(json_decode($output_array2[0][0]));
 });
-
-Route::get('saveProperties', function () {
-    $date = date('Y-m-d');
-    $file = file_get_contents(public_path("$date.json"));
-
-    $data = collect(json_decode($file));
-    dd($data);
-    $tosave = collect($data['cards']->list)->each(function ($card) {
-        $unit = new \App\Results();
-        $unit->price = $card->pricing->price ?? '';
-        $unit->url = $card->classifiedURL ?? '';
-        $unit->postcode = $card->zipCode ?? '';
-        $unit->location = $card->cityLabel ?? '';
-        $unit->type = $card->estateType ?? '';
-        $unit->m2 = $card->tags[2] ?? '';
-        $unit->rooms = $card->tags[0] ?? '';
-        $unit->bedrooms = $card->tags[1] ?? '';
-        $unit->description = $card->description ?? '';
-        $unit->save();
-    });
-});
-Route::get('/mutisya', function () {
-    $seloner = new \App\Selonger();
-    return $seloner->search('GET');
-});
-
 
 Auth::routes();
 
