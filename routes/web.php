@@ -46,8 +46,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('mail', function () {
     $date = date('dmy');
-    return new \App\Mail\SendExcel();
     $attachment = Excel::download(new \App\Exports\ListingExport(), "{$date}_selogerSearch.xlsx")->getFile();
     Mail::to(['kenmsh@gmail.com','coolivingimmo@gmail.com'])->send(new \App\Mail\SendExcel());
+    return new \App\Mail\SendExcel();
 });
 
