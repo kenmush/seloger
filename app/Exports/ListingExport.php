@@ -33,6 +33,9 @@ class ListingExport implements FromCollection,WithHeadings
             'm2',
             '# of rooms',
             '# of bedrooms',
+            'Description',
+            'Date and Time Created',
+            'Date and Time Update',
         ];
     }
 }
