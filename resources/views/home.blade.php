@@ -15,14 +15,14 @@
 
                     <h4 class="card-title">Listings
                         <small class="float-right">
-                            <a href="">
-                                <i class="far fa-file-pdf fa-2x"></i>
-                            </a>
+{{--                            <a href="">--}}
+{{--                                <i class="far fa-file-pdf fa-2x"></i>--}}
+{{--                            </a>--}}
                             <a href="{{ url('exportxls') }}">
                                 <i class="fas fa-file-excel fa-2x"></i>
 
                             </a>
-                            <a href="">
+                            <a href="{{ url('mail') }}">
                                 <i class="far fa-envelope fa-2x "></i>
                             </a>
                         </small>
