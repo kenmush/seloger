@@ -41,3 +41,7 @@ Route::get('/getproperties', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('mail', function () {
+    Mail::to('kenmsh@gmail.com')->send(new \App\Mail\SendExcel());
+    return new \App\Mail\SendExcel();
+});
