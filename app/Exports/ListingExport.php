@@ -27,6 +27,7 @@ class ListingExport implements FromCollection,WithHeadings
             'URL',
             'Postcode',
             'price',
+            'price/m2',
             'location',
             'type',
             'm2',
