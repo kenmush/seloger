@@ -6,7 +6,8 @@ Attached finding the listing report for {{ today()->toFormattedDateString() }} a
     | Zip Code       | p/m2         | m2  |  URL  |
     | ------------- |:-------------:| --------:| --------:|
     @foreach(\App\Results::where('squareMeterPrice', '<', 3000)->get() as $listing)
-    | {{ $listing->postcode }}      | {{ $listing->squareMeterPrice }}      | {{ $listing->m2 }}      |  {{ $listing->url }}         |
+    | {{ $listing->postcode }}      | {{ $listing->squareMeterPrice }}      | {{ $listing->m2 }}      | [View Listing]({{$listing->url}})
+       |
     @endforeach
 @endcomponent
 
