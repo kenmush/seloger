@@ -13,7 +13,7 @@ Route::resource('city', 'CityController');
 
 Route::get('/getproperties', function () {
     $client = new \GuzzleHttp\Client();
-    $response = $client->request('GET', 'https://www.seloger.com/list.htm?types=1%2C2&projects=2&enterprise=0&natures=1%2C2&places=%5B%7Bci%3A69383%7D%5D&qsVersion=1.0&LISTING-LISTpg=2', [
+    $response = $client->request('GET', 'https://www.seloger.com/list.htm?projects=2&types=1,2&natures=1,2&places=[{ci:690381}]&enterprise=0&qsVersion=1.0', [
         'headers' => [
             'cache-control' => 'no-cache',
             'pragma' => 'no-cache',
@@ -26,16 +26,16 @@ Route::get('/getproperties', function () {
             'dnt' => '1',
         ],
         'proxy' => [
-            'http'  => '190.7.113.63:80', // Use this proxy with "http"
-            'https' => '190.7.113.63:80', // Use this proxy with "https",
+            'http'  => '109.159.193.185:8080', // Use this proxy with "http"
+            'https' => '109.159.193.185:8080', // Use this proxy with "https",
         ]
     ]);
     $res = $response->getBody()->getContents();
-    echo $res;
-//    preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
-//    $date = date('Y-m-d');
-//    file_put_contents(public_path("$date.json"), (string)$output_array2[0][0]);
-//    dd(json_decode($output_array2[0][0]));
+//    echo $res;
+    preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
+    $date = date('Y-m-d');
+    file_put_contents(public_path("$date.json"), (string)$output_array2[0][0]);
+    dd(json_decode($output_array2[0][0]));
 });
 
 Auth::routes();
