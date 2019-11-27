@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Results extends Model
 {
-    //
+    protected $casts = [
+        'price' => 'integer'
+    ];
 }

@@ -27,11 +27,11 @@ class Selonger
                         'referer' => 'https://www.seloger.com'
                     ],
                     'cookies' => $jar,
-                    'proxy' => [
-                        'http' => '109.159.193.185:8080',
-                        'https' => '109.159.193.185:8080',
-
-                    ]
+//                    'proxy' => [
+//                        'http' => '109.159.193.185:8080',
+//                        'https' => '109.159.193.185:8080',
+//
+//                    ]
                 ]);
                 $res = $response->getBody()->getContents();
                 preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
@@ -54,7 +54,7 @@ class Selonger
             $unit = new \App\Results();
             $unit->website = 'seloger';
             $unit->squareMeterPrice = $card->pricing->squareMeterPrice ?? '';
-            $unit->price = $card->pricing->price ?? '';
+            $unit->price = $card->pricing->rawPrice ?? '';
             $unit->url = $card->classifiedURL ?? '';
             $unit->postcode = $card->zipCode ?? '';
             $unit->location = $locate ?? '';
