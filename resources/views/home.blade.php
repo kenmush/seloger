@@ -48,7 +48,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach(\App\Results::all() as $result)
+                            @foreach(\App\Results::where('squareMeterPrice', '<', 3000)->get() as $result)
                                 <tr>
                                     <td scope="row">{{$loop->iteration }}</td>
                                     <td>{{ $result->website }}</td>
