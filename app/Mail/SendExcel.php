@@ -30,7 +30,9 @@ class SendExcel extends Mailable
     public function build()
     {
         $date = date('dmy');
-        return $this->markdown('mail.sendexcel')->subject('Excel Report')->attach(
+        $today = today()->toFormattedDateString();
+        $time = date('h:m');
+        return $this->markdown('mail.sendexcel')->subject("Seloger Search { $today } at { $time }")->attach(
             Excel::download(
                 new ListingExport(),
                 "{$date}_Seloger.xlsx"
