@@ -54,7 +54,7 @@
                                     <td>{{ $result->website }}</td>
                                     <td>{{ $result->postcode }}</td>
                                     <td><a href="{{ $result->url }}">
-                                            {{ \Illuminate\Support\Str::afterLast($result->url,'/') }}
+                                            {{ \Illuminate\Support\Str::words($result->description,3) }}
                                         </a></td>
                                     <td>{{ $result->squareMeterPrice }}</td>
                                     <td>{{ $result->price }}</td>
