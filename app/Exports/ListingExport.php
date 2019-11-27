@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ListingExport implements FromCollection,WithHeadings
+class ListingExport implements FromCollection, WithHeadings
 {
 
     /**
@@ -17,8 +17,9 @@ class ListingExport implements FromCollection,WithHeadings
      */
     public function collection()
     {
-        return Results::all();
+        return Results::where('squareMeterPrice', '<', 3000)->get();
     }
+
     public function headings(): array
     {
         return [
