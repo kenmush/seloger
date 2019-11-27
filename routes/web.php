@@ -27,10 +27,10 @@ Route::get('/getproperties', function () {
             'referer' => 'https://www.seloger.com',
             'dnt' => '1',
         ],
-//        'proxy' => [
-//            'http'  => '109.159.193.185:8080', // Use this proxy with "http"
-//            'https' => '109.159.193.185:8080', // Use this proxy with "https",
-//        ]
+        'proxy' => [
+            'http'  => '91.106.178.160:8080', // Use this proxy with "http"
+            'https' => '91.106.178.160:8080', // Use this proxy with "https",
+        ]
     ]);
     $res = $response->getBody()->getContents();
 //    echo $res;
