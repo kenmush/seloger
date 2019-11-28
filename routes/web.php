@@ -40,6 +40,14 @@ Route::get('/getproperties', function () {
     dd(json_decode($output_array2[0][0]));
 });
 
+Route::get('properties', function () {
+//    $date = date('Y-m-d');
+//    $data =file_get_contents(public_path("$date.json"));
+//    $new = json_decode($data);
+    $search = new \App\Selonger();
+    dd($search->search('690382'));
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
