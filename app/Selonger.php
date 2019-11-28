@@ -1,8 +1,9 @@
 <?php
 
 namespace App;
+
+use App\Jobs\ProcessSearchResults;
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Str;
 
 class Selonger
@@ -51,7 +52,7 @@ class Selonger
             if (!isset($card->classifiedURL)) {
                 return;
             }
-            $locate = $card->cityLabel .  $card->districtLabel;
+            $locate = $card->cityLabel . $card->districtLabel;
             $values = Str::replaceLast('€', '', $card->pricing->squareMeterPrice);
             $perSquareMetre = preg_replace('/\s/u', '', $values);
             $unit = new \App\Results();
@@ -68,6 +69,7 @@ class Selonger
             $unit->description = $card->description ?? '';
             $unit->save();
         });
+        ProcessSearchResults::dispatch();
         sleep(10);
         return $results;
     }
