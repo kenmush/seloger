@@ -3,6 +3,7 @@
 namespace App;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Str;
 
 class Selonger
 {
@@ -51,9 +52,11 @@ class Selonger
                 return;
             }
             $locate = $card->cityLabel .  $card->districtLabel;
+            $values = Str::replaceLast('€', '', $card->pricing->squareMeterPrice);
+            $perSquareMetre = preg_replace('/\s/u', '', $values);
             $unit = new \App\Results();
             $unit->website = 'seloger';
-            $unit->squareMeterPrice = $card->pricing->squareMeterPrice ?? '';
+            $unit->squareMeterPrice = $perSquareMetre ?? '';
             $unit->price = $card->pricing->rawPrice ?? '';
             $unit->url = $card->classifiedURL ?? '';
             $unit->postcode = $card->zipCode ?? '';

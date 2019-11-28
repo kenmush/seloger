@@ -51,3 +51,7 @@ Route::get('mail', function () {
     return new \App\Mail\SendExcel();
 });
 
+Route::get('ju', function () {
+    $mush = \App\Results::find(2);
+    return $mush->squareMeterPrice;
+});
