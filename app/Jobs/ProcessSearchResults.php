@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Mail\SendExcel;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -30,6 +31,6 @@ class ProcessSearchResults implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to(['kenmsh@gmail.com','coolivingimmo@gmail.com'])->send(new \App\Mail\SendExcel());
+        Mail::to(['kenmsh@gmail.com','coolivingimmo@gmail.com'])->send(new SendExcel());
     }
 }
