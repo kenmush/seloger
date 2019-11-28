@@ -48,7 +48,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach(\App\Results::where('squareMeterPrice', '<', 3000)->whereDate('created_at',date('Y-m-d'))->orderBy('squareMeterPrice')->get() as $result)
+                                @foreach(\App\Results::where('squareMeterPrice', '>', 0)->where('squareMeterPrice', '<', 3000)->whereDate('created_at',date('Y-m-d'))->orderBy('squareMeterPrice')->get() as $result)
                                     <tr>
                                         <td scope="row">{{$loop->iteration }}</td>
                                         <td>{{ $result->website }}</td>
