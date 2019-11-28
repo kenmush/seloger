@@ -44,8 +44,7 @@ Route::get('properties', function () {
 //    $date = date('Y-m-d');
 //    $data =file_get_contents(public_path("$date.json"));
 //    $new = json_decode($data);
-    $search = new \App\Selonger();
-    dd($search->search('690382'));
+    $results = \App\Results::where('squareMeterPrice', '<', 3000)->get();
 });
 
 Auth::routes();

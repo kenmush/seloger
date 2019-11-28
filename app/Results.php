@@ -9,12 +9,7 @@ class Results extends Model
 {
     protected $casts = [
         'price' => 'integer',
+        'squareMeterPrice' => 'integer',
     ];
-
-    public function getSquareMeterPriceAttribute($value)
-    {
-        $values = Str::replaceLast('€', '', $value);
-        return preg_replace('/\s/u', '', $values);
-    }
 
 }
