@@ -56,8 +56,8 @@
                                         <td><a href="{{ $result->url }}">
                                                 {{ \Illuminate\Support\Str::words($result->description,3) }}
                                             </a></td>
-                                        <td>{{ $result->squareMeterPrice}}</td>
-                                        <td>{{ $result->price }}</td>
+                                        <td>{{ number_format($result->squareMeterPrice,0)}} €</td>
+                                        <td>{{ number_format($result->price,0) }} €</td>
                                         <td></td>
                                         <td></td>
                                         <td>{{ $result->location }}</td>
