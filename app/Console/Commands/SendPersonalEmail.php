@@ -39,6 +39,6 @@ class SendPersonalEmail extends Command
     public function handle()
     {
         \Mail::to('kenmsh@gmail.com')->send(new Personal());
-        return "Done";
+        return 1;
     }
 }

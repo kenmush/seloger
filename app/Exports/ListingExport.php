@@ -17,7 +17,7 @@ class ListingExport implements FromCollection, WithHeadings
      */
     public function collection()
     {
-        return Results::where('squareMeterPrice', '>', 0)->where('squareMeterPrice', '<', 3000)->whereDate('created_at',date('Y-m-d'))->orderBy('squareMeterPrice')->get();
+        return Results::distinct()->where('squareMeterPrice', '>', 0)->where('squareMeterPrice', '<', 3000)->whereDate('created_at',date('Y-m-d'))->orderBy('squareMeterPrice')->get();
     }
 
     public function headings(): array

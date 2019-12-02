@@ -59,6 +59,7 @@ Route::get('mail', function () {
 });
 
 Route::get('ju', function () {
-    $mush = \App\Results::find(2);
-    return $mush->squareMeterPrice;
+    phpinfo();
+//    $mush = \App\Results::find(2);
+//    return $mush->squareMeterPrice;
 });
