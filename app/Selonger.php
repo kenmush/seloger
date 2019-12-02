@@ -69,7 +69,7 @@ class Selonger
             $unit->description = $card->description ?? '';
             $unit->save();
         });
-        ProcessSearchResults::dispatch();
+//        ProcessSearchResults::dispatch();
         sleep(10);
         return $results;
     }

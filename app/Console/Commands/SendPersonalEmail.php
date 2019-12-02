@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Mail\Personal;
+use App\Mail\SendExcel;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 
 class SendPersonalEmail extends Command
 {
@@ -38,7 +40,7 @@ class SendPersonalEmail extends Command
      */
     public function handle()
     {
-        \Mail::to('kenmsh@gmail.com')->send(new Personal());
-        return 1;
+        Mail::to(['kenmsh@gmail.com','coolivingimmo@gmail.com'])->send(new SendExcel());
+        return 'Done';
     }
 }

@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-//        $schedule->command(SendPersonalEmail::class)->everyMinute();
+        $schedule->command(SendPersonalEmail::class)->everyMinute();
         $schedule->command(ScrapeSelonger::class)->hourly();
         // $schedule->command('inspire')
         //          ->hourly();
