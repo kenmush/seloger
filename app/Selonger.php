@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Jobs\ProcessSearchResults;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Str;
 
@@ -30,9 +29,8 @@ class Selonger
                     ],
                     'cookies' => $jar,
                     'proxy' => [
-                        'http' => '91.106.178.160:8080',
-                        'https' => '91.106.178.160:8080',
-
+                        'http' => '151.253.92.173:8080',
+                        'https' => '151.253.92.173:8080',
                     ]
                 ]);
                 $res = $response->getBody()->getContents();

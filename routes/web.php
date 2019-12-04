@@ -28,8 +28,8 @@ Route::get('/getproperties', function () {
             'dnt' => '1',
         ],
         'proxy' => [
-            'http'  => '91.106.178.160:8080', // Use this proxy with "http"
-            'https' => '91.106.178.160:8080', // Use this proxy with "https",
+            'http' => '151.253.92.173:8080',
+            'https' => '151.253.92.173:8080',
         ]
     ]);
     $res = $response->getBody()->getContents();
