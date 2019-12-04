@@ -26,8 +26,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command(SendPersonalEmail::class)->hourly();
         $schedule->command(ScrapeSelonger::class)->hourly();
+        $schedule->command(SendPersonalEmail::class)->hourly();
     }
 
     /**
