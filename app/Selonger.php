@@ -40,7 +40,7 @@ class Selonger
                 $totalpages = round($data['navigation']->counts->count / 25, 0);
                 $results = array_merge($results, $data['cards']->list);
                 $page++;
-                sleep(10);
+                sleep(2);
             } catch (ClientException $exception) {
                 $response = $exception->getResponse();
                 $responseBodyAsString = $response->getBody()->getContents();
