@@ -19,6 +19,7 @@ class Selonger
             $client = new \GuzzleHttp\Client();
             $jar = new \GuzzleHttp\Cookie\CookieJar();
             try {
+
                 $response = $client->request('GET', "https://www.seloger.com/list.htm?projects=2&types=1%2C2&natures=1%2C2&places=%5B%7Bci%3A{$postcode}%7D%5D&enterprise=0&qsVersion=1.0&LISTING-LISTpg={$page}", [
                     'headers' => [
                         'authority' => 'www.seloger.com',
