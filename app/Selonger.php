@@ -29,8 +29,8 @@ class Selonger
                     ],
                     'cookies' => $jar,
                     'proxy' => [
-                        'http' => '198.98.59.239:8080',
-                        'https' => '198.98.59.239:8080',
+                        'http' => '209.90.63.108:80',
+                        'https' => '209.90.63.108:80',
                     ]
                 ]);
                 $res = $response->getBody()->getContents();
