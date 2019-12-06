@@ -28,10 +28,10 @@ class Selonger
                         'referer' => 'https://www.seloger.com'
                     ],
                     'cookies' => $jar,
-                    'proxy' => [
-                        'http' => '209.90.63.108:80',
-                        'https' => '209.90.63.108:80',
-                    ]
+//                    'proxy' => [
+//                        'http' => '209.90.63.108:80',
+//                        'https' => '209.90.63.108:80',
+//                    ]
                 ]);
                 $res = $response->getBody()->getContents();
                 preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
