@@ -37,14 +37,14 @@ class Selonger
                 $res = $response->getBody()->getContents();
                 preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
                 $date = date('Y-m-d');
-                if (!isset($output_array2[0])) {
-                    continue;
-                }
+                if (!isset($output_array2[0][0])) continue;
+
                 $data = collect(json_decode($output_array2[0][0]));
                 $totalpages = round($data['navigation']->counts->count / 25, 0);
                 $results = array_merge($results, $data['cards']->list);
                 $page++;
                 sleep(2);
+
             } catch (ClientException $exception) {
                 $response = $exception->getResponse();
                 $responseBodyAsString = $response->getBody()->getContents();
