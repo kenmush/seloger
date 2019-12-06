@@ -3,6 +3,7 @@
 namespace App;
 
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Str;
 
 class Selonger
@@ -44,6 +45,8 @@ class Selonger
             } catch (ClientException $exception) {
                 $response = $exception->getResponse();
                 $responseBodyAsString = $response->getBody()->getContents();
+            } catch (GuzzleException $e) {
+                dd($e->getMessage());
             }
 
         } while ($page <= $totalpages);
