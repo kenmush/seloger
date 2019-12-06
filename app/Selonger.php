@@ -29,8 +29,8 @@ class Selonger
                     ],
                     'cookies' => $jar,
                     'proxy' => [
-                        'http' => '67.207.94.118:80',
-                        'https' => '67.207.94.118:80',
+                        'http' => '209.90.63.108:80',
+                        'https' => '209.90.63.108:80',
                     ]
                 ]);
                 $res = $response->getBody()->getContents();
@@ -40,7 +40,6 @@ class Selonger
                 $totalpages = round($data['navigation']->counts->count / 25, 0);
                 $results = array_merge($results, $data['cards']->list);
                 $page++;
-                dd($results);
                 sleep(2);
             } catch (ClientException $exception) {
                 $response = $exception->getResponse();
