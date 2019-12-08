@@ -39,20 +39,18 @@ class Selonger
                     ////                        'http' => '180.210.222.117:1080',
                     //                    ]
                 ]);
+                $res = $response->getBody()->getContents();
+                preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
+                $date = date('Y-m-d');
+                if (!isset($output_array2[0][0])) {
+                    return "done";
+                }
+                $data = collect(json_decode($output_array2[0][0]));
+                $totalpages = round($data['navigation']->counts->count / 25, 0);
+                $results = array_merge($results, $data['cards']->list);
+                $page++;
             } catch (GuzzleException $e) {
             }
-            $res = $response->getBody()->getContents();
-            preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
-            $date = date('Y-m-d');
-            if (!isset($output_array2[0][0])) {
-                return "done";
-            }
-            $data = collect(json_decode($output_array2[0][0]));
-            $totalpages = round($data['navigation']->counts->count / 25, 0);
-            $results = array_merge($results, $data['cards']->list);
-            $page++;
-
-
         } while ($page <= $totalpages);
         $tosave = collect($results)->each(static function ($card) {
             if (!isset($card->classifiedURL)) {
@@ -75,8 +73,7 @@ class Selonger
             $unit->description = $card->description ?? '';
             $unit->save();
         });
-//        ProcessSearchResults::dispatch();
-        sleep(10);
+
         return $results;
     }
 
