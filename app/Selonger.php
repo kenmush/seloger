@@ -35,7 +35,7 @@ class Selonger
                     ],
                     'cookies' => $jar,
                                         'proxy' => [
-                                            'https' => '99.126.106.177:80',
+//                                            'https' => '99.126.106.177:80',
                     //                        'http' => '180.210.222.117:1080',
                                         ]
                 ]);
@@ -44,9 +44,7 @@ class Selonger
 
 
                 $date = date('Y-m-d');
-                if (!isset($output_array2[0][0])) {
-                    continue;
-                }
+
                 $data = collect(json_decode($output_array2[0][0]));
                 $totalpages = round($data['navigation']->counts->count / 25, 0);
                 $results = array_merge($results, $data['cards']->list);
