@@ -27,24 +27,17 @@ Route::get('/getproperties', function () {
             'referer' => 'https://www.seloger.com',
             'dnt' => '1',
         ],
-        'proxy' => [
-            'http' => '134.209.188.111:1081',
-            'https' => '134.209.188.111:1081',
-        ]
+//        'proxy' => [
+//            'http' => '134.209.188.111:1081',
+//            'https' => '134.209.188.111:1081',
+//        ]
     ]);
     $res = $response->getBody()->getContents();
-//    echo $res;
+dd($res);
     preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
     $date = date('Y-m-d');
     file_put_contents(public_path("$date.json"), (string)$output_array2[0][0]);
     dd(json_decode($output_array2[0][0]));
-});
-
-Route::get('properties', function () {
-//    $date = date('Y-m-d');
-//    $data =file_get_contents(public_path("$date.json"));
-//    $new = json_decode($data);
-    $results = \App\Results::where('squareMeterPrice', '<', 3000)->get();
 });
 
 Auth::routes();
@@ -56,10 +49,4 @@ Route::get('mail', function () {
     $attachment = Excel::download(new \App\Exports\ListingExport(), "{$date}_selogerSearch.xlsx")->getFile();
     Mail::to(['kenmsh@gmail.com','coolivingimmo@gmail.com'])->send(new \App\Mail\SendExcel());
     return new \App\Mail\SendExcel();
-});
-
-Route::get('ju', function () {
-    phpinfo();
-//    $mush = \App\Results::find(2);
-//    return $mush->squareMeterPrice;
 });
