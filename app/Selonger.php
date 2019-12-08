@@ -24,17 +24,22 @@ class Selonger
                 $response = $client->request('GET', "https://www.seloger.com/list.htm?projects=2&types=1%2C2&natures=1%2C2&places=%5B%7Bci%3A{$postcode}%7D%5D&enterprise=0&qsVersion=1.0&LISTING-LISTpg={$page}", [
                     'headers' => [
                         'authority' => 'www.seloger.com',
+                        'pragma' => 'no-cache',
+                        'cache-control' => 'no-cache',
+                        'dnt' => 1,
+                        'upgrade-insecure-requests' => 1,
+                        'sec-fetch-user' => '?1',
                         'origin' => 'www.seloger.com',
-                        'sec-fetch-site' => 'same-origin',
-                        'sec-fetch-mode' => 'cors',
-                        'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
+                        'sec-fetch-site' => 'none',
+                        'sec-fetch-mode' => 'navigate',
+                        'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.10s Safari/537.36',
                         'referer' => 'https://www.seloger.com'
                     ],
                     'cookies' => $jar,
-                    'proxy' => [
-                        'http' => '40.90.162.225:8080',
-                        'https' => '40.90.162.225:8080',
-                    ]
+//                    'proxy' => [
+//                        'https' => '180.210.222.117:1080',
+////                        'http' => '180.210.222.117:1080',
+//                    ]
                 ]);
                 $res = $response->getBody()->getContents();
                 preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
