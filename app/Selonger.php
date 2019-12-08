@@ -2,7 +2,6 @@
 
 namespace App;
 
-use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Str;
 
@@ -18,9 +17,8 @@ class Selonger
 
             $client = new \GuzzleHttp\Client();
             $jar = new \GuzzleHttp\Cookie\CookieJar();
-//            $jar = '';
-            try {
 
+            try {
                 $response = $client->request('GET', "https://www.seloger.com/list.htm?projects=2&types=1%2C2&natures=1%2C2&places=%5B%7Bci%3A{$postcode}%7D%5D&enterprise=0&qsVersion=1.0&LISTING-LISTpg={$page}", [
                     'headers' => [
                         'authority' => 'www.seloger.com',
@@ -36,26 +34,24 @@ class Selonger
                         'referer' => 'https://www.seloger.com'
                     ],
                     'cookies' => $jar,
-//                    'proxy' => [
-//                        'https' => '180.210.222.117:1080',
-////                        'http' => '180.210.222.117:1080',
-//                    ]
+                    //                    'proxy' => [
+                    //                        'https' => '180.210.222.117:1080',
+                    ////                        'http' => '180.210.222.117:1080',
+                    //                    ]
                 ]);
-                $res = $response->getBody()->getContents();
-                preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
-                $date = date('Y-m-d');
-                if (!isset($output_array2[0][0])) {
-                    return "done";
-                }
-                $data = collect(json_decode($output_array2[0][0]));
-                $totalpages = round($data['navigation']->counts->count / 25, 0);
-                $results = array_merge($results, $data['cards']->list);
-                $page++;
-
-            } catch (ClientException $exception) {
-                $response = $exception->getResponse();
-                $responseBodyAsString = $response->getBody()->getContents();
+            } catch (GuzzleException $e) {
             }
+            $res = $response->getBody()->getContents();
+            preg_match_all('/{("cards").*(?=;window\.tags)/', $res, $output_array2);
+            $date = date('Y-m-d');
+            if (!isset($output_array2[0][0])) {
+                return "done";
+            }
+            $data = collect(json_decode($output_array2[0][0]));
+            $totalpages = round($data['navigation']->counts->count / 25, 0);
+            $results = array_merge($results, $data['cards']->list);
+            $page++;
+
 
         } while ($page <= $totalpages);
         $tosave = collect($results)->each(static function ($card) {
